@@ -1,3 +1,5 @@
+#![allow(dead_code, unused_imports, unused_variables)]
+
 use log::{log, log_enabled, Log, Metadata, Record};
 
 macro_rules! all_log_macros {

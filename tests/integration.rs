@@ -1,4 +1,4 @@
-#![allow(dead_code, unused_imports)]
+#![allow(dead_code, unused_imports, unused_variables)]
 
 use log::{debug, error, info, trace, warn, Level, LevelFilter, Log, Metadata, Record};
 use std::sync::{Arc, Mutex};

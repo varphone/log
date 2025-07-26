@@ -114,6 +114,23 @@ macro_rules! log {
     });
 }
 
+#[cfg(any(
+    feature = "max_level_off",
+    all(not(debug_assertions), feature = "release_max_level_off")
+))]
+#[doc(hidden)]
+#[macro_export]
+macro_rules! __log {
+    // Suppress all logging when max_level_off or release_max_level_off is enabled
+    (logger: $logger:expr, target: $target:expr, $lvl:expr, $($arg:tt)+) => ({
+        // Logging disabled at compile time; nothing is emitted.
+    });
+}
+
+#[cfg(not(any(
+    feature = "max_level_off",
+    all(not(debug_assertions), feature = "release_max_level_off")
+)))]
 #[doc(hidden)]
 #[macro_export]
 macro_rules! __log {
